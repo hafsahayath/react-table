@@ -15,13 +15,13 @@ const Table = <T extends object>({
     });
 
   return (
-    <table>
+    <table {...getTableProps()}>
       <thead>
         <tr>
           <th></th>
         </tr>
       </thead>
-      <tbody>
+      <tbody {...getTableBodyProps()}>
         <tr>
           <td></td>
         </tr>
