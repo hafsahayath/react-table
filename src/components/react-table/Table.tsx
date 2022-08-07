@@ -8,10 +8,11 @@ const Table = <T extends object>({
   columns,
   data,
 }: ITableProps<T>): JSX.Element => {
-  const reactTableInstance = useTable({
-    columns,
-    data,
-  });
+  const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
+    useTable({
+      columns,
+      data,
+    });
 
   return (
     <table>
