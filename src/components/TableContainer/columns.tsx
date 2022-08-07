@@ -33,7 +33,7 @@ export const columns: Column<IColumnData>[] = [
     accessor: "country",
   },
   {
-    Header: "phone",
+    Header: "Phone",
     accessor: "phone",
   },
 ];

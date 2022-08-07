@@ -1,4 +1,5 @@
 import { Column, useTable } from "react-table";
+import "./Table.css";
 interface ITableProps<T extends object> {
   data: T[];
   columns: Column<T>[];
