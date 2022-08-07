@@ -1,4 +1,5 @@
 import { Column } from "react-table";
+import { format } from "date-fns";
 
 export interface IColumnData {
   id: number;
@@ -27,6 +28,10 @@ export const columns: Column<IColumnData>[] = [
   {
     Header: "DOB",
     accessor: "date_of_birth",
+    // @ts-ignore
+    Cell: ({ value }) => {
+      return format(new Date(value), "dd/MM/yyyy");
+    },
   },
   {
     Header: "Country",
