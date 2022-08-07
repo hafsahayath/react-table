@@ -1,4 +1,17 @@
-export const columns = [
+import { Column } from "react-table";
+
+export interface IColumnData {
+  id: number;
+  first_name: string;
+  last_name: string;
+  date_of_birth: string;
+  country: string;
+  phone: string;
+  email?: string;
+  age?: number;
+}
+
+export const columns: Column<IColumnData>[] = [
   {
     Header: "ID",
     accessor: "id",
@@ -16,11 +29,11 @@ export const columns = [
     accessor: "date_of_birth",
   },
   {
-    Header: "country",
-    accessor: "Country",
+    Header: "Country",
+    accessor: "country",
   },
   {
     Header: "phone",
-    accessor: "Phone",
+    accessor: "phone",
   },
 ];
