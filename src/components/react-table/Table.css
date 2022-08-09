@@ -20,3 +20,10 @@ table th {
   background-color: #1976D2;
   color: white;
 }
+
+.search {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin: 10px;
+}
