@@ -17,6 +17,7 @@ export const columns: Column<IColumnData>[] = [
   {
     Header: "ID",
     accessor: "id",
+    disableFilters: true 
   },
   {
     Header: "First Name",
