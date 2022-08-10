@@ -9,13 +9,18 @@ import ColumnFilter from "../column-filter/ColumnFilter";
 const TableContainer = (): JSX.Element => {
   const columns = useMemo(() => COLUMNS, []);
   const data = useMemo(() => mockData, []);
-  const defaultColumn = useMemo(() => ({Filter:ColumnFilter}),[]) 
+  // applies column filter to each column, unless disableFilter is specified at the column level
+  const defaultColumn = useMemo(() => ({ Filter: ColumnFilter }), []);
 
   return (
     <div>
       {/* <Table columns={columns} data={data} /> */}
       {/* <SortingTable columns={columns} data={data} /> */}
-      <FilteringTable columns={columns} data={data} defaultColumn={defaultColumn}/>
+      <FilteringTable
+        columns={columns}
+        data={data}
+        defaultColumn={defaultColumn}
+      />
     </div>
   );
 };
