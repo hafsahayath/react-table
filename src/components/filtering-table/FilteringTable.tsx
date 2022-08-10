@@ -1,15 +1,17 @@
-import { Column, useTable, useGlobalFilter } from "react-table";
+import { Column, useTable, useGlobalFilter, useFilters } from "react-table";
 import GlobalFilter from "../global-filter/GlobalFilter";
 import "../react-table/Table.css";
 
 interface ITableProps<T extends object> {
   data: T[];
   columns: Column<T>[];
+  defaultColumn: any;
 }
 
 const FilteringTable = <T extends object>({
   columns,
   data,
+  defaultColumn,
 }: ITableProps<T>): JSX.Element => {
   const {
     getTableProps,
@@ -24,7 +26,9 @@ const FilteringTable = <T extends object>({
     {
       columns,
       data,
+      defaultColumn,
     },
+    useFilters,
     useGlobalFilter
   );
 
@@ -41,10 +45,10 @@ const FilteringTable = <T extends object>({
             return (
               <tr {...headerGroup.getHeaderGroupProps()}>
                 {headerGroup.headers.map((column) => {
-                  console.log(column, "column");
                   return (
                     <th {...column.getHeaderProps()}>
                       {column.render("Header")}
+                      {column.canFilter ? column.render("Filter") : null}
                     </th>
                   );
                 })}
