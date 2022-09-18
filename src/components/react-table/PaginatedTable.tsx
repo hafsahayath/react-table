@@ -1,4 +1,4 @@
-import { Column, useTable, usePagination } from "react-table";
+import { Column, useTable, usePagination, useRowSelect } from "react-table";
 import "./Table.css";
 interface ITableProps<T extends object> {
   data: T[];
@@ -23,13 +23,15 @@ const PaginatedTable = <T extends object>({
     state,
     gotoPage,
     pageCount,
+    selectedFlatRows,
   } = useTable(
     {
       columns,
       data,
-      initialState: { pageSize: 15 },
+      initialState: { pageSize: 10 },
     },
-    usePagination
+    usePagination,
+    useRowSelect
   );
 
   const { pageIndex } = state;
