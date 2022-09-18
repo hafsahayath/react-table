@@ -1,5 +1,6 @@
 import { Column, useTable, usePagination, useRowSelect } from "react-table";
 import "./Table.css";
+import IndeterminateCheckbox from "./IndeterminateCheckbox";
 interface ITableProps<T extends object> {
   data: T[];
   columns: Column<T>[];
@@ -31,10 +32,31 @@ const PaginatedTable = <T extends object>({
       initialState: { pageSize: 10 },
     },
     usePagination,
-    useRowSelect
+    useRowSelect,
+    (hooks) => {
+      hooks.visibleColumns.push((columns) => [
+        {
+          id: "selection",
+          Header: ({ getToggleAllPageRowsSelectedProps }) => (
+            // @ts-ignore
+            <IndeterminateCheckbox {...getToggleAllPageRowsSelectedProps()} />
+          ),
+          // @ts-ignore
+          Cell: ({ row }) => (
+            <IndeterminateCheckbox {...row.getToggleRowSelectedProps()} />
+          ),
+        },
+        ...columns,
+      ]);
+    }
   );
 
   const { pageIndex } = state;
+
+  console.log(
+    selectedFlatRows.map((row) => row.original),
+    "selected rows"
+  );
 
   return (
     <>
