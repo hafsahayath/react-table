@@ -17,6 +17,8 @@ const PaginatedTable = <T extends object>({
     prepareRow,
     previousPage,
     nextPage,
+    canNextPage,
+    canPreviousPage,
   } = useTable(
     {
       columns,
@@ -59,8 +61,12 @@ const PaginatedTable = <T extends object>({
         </tbody>
       </table>
       <div>
-        <button onClick={previousPage}>previous</button>
-        <button onClick={nextPage}>next</button>
+        <button onClick={previousPage} disabled={!canPreviousPage}>
+          previous
+        </button>
+        <button onClick={nextPage} disabled={!canNextPage}>
+          next
+        </button>
       </div>
     </>
   );
