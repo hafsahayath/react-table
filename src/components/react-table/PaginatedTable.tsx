@@ -23,7 +23,6 @@ const PaginatedTable = <T extends object>({
     state,
     gotoPage,
     pageCount,
-    xs,
   } = useTable(
     {
       columns,
