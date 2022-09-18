@@ -75,12 +75,26 @@ const PaginatedTable = <T extends object>({
             previous
           </button>
         </div>
-        <span>
-          Page{" "}
-          <strong>
-            {pageIndex + 1} of {pageOptions.length}
-          </strong>
-        </span>
+        <div>
+          <span>
+            Page{" "}
+            <strong>
+              {pageIndex + 1} of {pageOptions.length}
+            </strong>
+          </span>
+          <span>
+            {" "}
+            | Go to page:
+            <input
+              type="number"
+              defaultValue={pageIndex + 1}
+              onChange={(e) => {
+                const pageNum = e.target.value ? Number(e.target.value) - 1 : 0;
+                gotoPage(pageNum);
+              }}
+            />
+          </span>
+        </div>
         <div>
           <button onClick={nextPage} disabled={!canNextPage}>
             next
